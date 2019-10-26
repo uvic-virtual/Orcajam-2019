@@ -62,11 +62,11 @@ public class PlateForm : MonoBehaviour
         {
             level = 1;
         }
-        if (playerPos > -4f && playerPos <= -2f)
+        if (playerPos > -6f && playerPos <= -2f)
         {
             level = 2;
         }
-        if (playerPos > -11f && playerPos <= -6f)
+        if (playerPos > -11f && playerPos <= -7f)
         {
             level = 3;
         }

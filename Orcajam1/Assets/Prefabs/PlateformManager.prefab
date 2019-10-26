@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 3129834427553237332, guid: 7193f5ba63cc7dc448f972bf610489d7, type: 3}
   size: 3
+  player: {fileID: 2841302392580781710, guid: 05bf48d1c6415fe44a47977a26911656, type: 3}
   parent1: {fileID: 8764232106668013487}
   parent2: {fileID: 8764232107398774446}
   parent3: {fileID: 8764232108494281132}
