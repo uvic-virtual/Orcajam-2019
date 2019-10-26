@@ -406,6 +406,8 @@ MonoBehaviour:
   Size: 10
   MaxLevels: 10
   DistanceBetweenPlatforms: 5
+  RedToDestroyTime: 3
+  TileDestroyDelay: 0.5
 --- !u!4 &2045797846
 Transform:
   m_ObjectHideFlags: 0

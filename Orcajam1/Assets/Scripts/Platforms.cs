@@ -4,10 +4,24 @@ using UnityEngine;
 public class Platforms : MonoBehaviour
 {
     [SerializeField] private GameObject TilePrefab;
+    
+    /// <summary>
+    /// 1/2 * the # of tiles on a side.</summary>
     [SerializeField] private int Size = 6;
+
+    /// <summary>
+    /// Max # of layers before letting player fall to their doom. </summary>
     [SerializeField] private int MaxLevels = 10;
+
     [SerializeField] private int DistanceBetweenPlatforms = 5;
-    [SerializeField] private float TileDestroyDelay = 3;
+
+    /// <summary>
+    /// How long a tile stays red before being destroyed.</summary>
+    [SerializeField] private float RedToDestroyTime = 3;
+
+    /// <summary>
+    /// Delay before choosing a new tile to destroy.</summary>
+    [SerializeField] private float TileDestroyDelay = 0.5f;
 
     private Transform Player;
 
@@ -20,6 +34,7 @@ public class Platforms : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Layers = new List<List<GameObject>>
         {
+            //create first layer.
             MakeLevel(0)
         };
     }
@@ -40,6 +55,7 @@ public class Platforms : MonoBehaviour
             Timer += Time.deltaTime;
             if (Timer > TileDestroyDelay)
             {
+                //destroy a tile in the last layer in layers (current layer).
                 DestroyRandomTile(Layers[Layers.Count - 1]);
                 Timer = 0;
             }
@@ -83,8 +99,8 @@ public class Platforms : MonoBehaviour
         var renderer = tileToDestroy.GetComponent<Renderer>();
         renderer.material.SetColor("_Color", Color.red);
 
-        //Destroy tile + remove from level list
-        Destroy(tileToDestroy, TileDestroyDelay);
+        //Destroy tile and remove from level list
+        Destroy(tileToDestroy, RedToDestroyTime);
         level.Remove(tileToDestroy);
     }
 }
