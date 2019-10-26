@@ -273,7 +273,7 @@ MonoBehaviour:
   tile: {fileID: 3129834427553237332, guid: 7193f5ba63cc7dc448f972bf610489d7, type: 3}
   parent1: {fileID: 1737786955}
   parent2: {fileID: 1375866700}
-  parent3: {fileID: 0}
+  parent3: {fileID: 323905614}
 --- !u!4 &879765457
 Transform:
   m_ObjectHideFlags: 0

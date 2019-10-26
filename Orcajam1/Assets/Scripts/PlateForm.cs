@@ -4,51 +4,96 @@ using UnityEngine;
 
 public class PlateForm : MonoBehaviour
 {
-    [SerializeField] GameObject tile;
-    [SerializeField] GameObject parent1;
-    [SerializeField] GameObject parent2;
-    [SerializeField] GameObject parent3;
+    [SerializeField] private GameObject tile;
 
+    [SerializeField] private Transform parent1;
+    [SerializeField] private Transform parent2;
+    [SerializeField] private Transform parent3;
 
+    private List<GameObject> floorOneTiles;
+    private List<GameObject> floorTwoTiles;
+    private List<GameObject> floorThreeTiles;
 
-    // Start is called before the first frame update
+    private float timer;
+
+    // generate all 3 plateforms
     void Start()
     {
-        GameObject[] floorOneTiles = new GameObject[400];
-        int writePos = 0;
-        for(int x = -10; x <= 10; x++)
+        int size = 6;
+        timer = 0f;
+
+        floorOneTiles = new List<GameObject>();
+        floorTwoTiles = new List<GameObject>();
+        floorThreeTiles = new List<GameObject>();
+
+        for(int x = -size; x <= size; x++)
         {
-            for(int z = -10; z <= 10; z++)
+            for(int z = -size; z <= size; z++)
             {
-                floorOneTiles[writePos] = Instantiate(tile, new Vector3(x, 0, z), Quaternion.identity,parent1.transform);
+                floorOneTiles.Add(Instantiate(tile, new Vector3(x, 0, z), Quaternion.identity,parent1));
             }
         }
 
-        GameObject[] floorTwoTiles = new GameObject[400];
-        writePos = 0;
-        for (int x = -10; x <= 10; x++)
+        for (int x = -size; x <= size; x++)
         {
-            for (int z = -10; z <= 10; z++)
+            for (int z = -size; z <= size; z++)
             {
-                floorTwoTiles[writePos] = Instantiate(tile, new Vector3(x, -5, z), Quaternion.identity, parent2.transform);
+                floorTwoTiles.Add(Instantiate(tile, new Vector3(x, -5, z), Quaternion.identity, parent2));
             }
         }
 
-        GameObject[] floorThreeTiles = new GameObject[400];
-        writePos = 0;
-        for (int x = -10; x <= 10; x++)
+        for (int x = -size; x <= size; x++)
         {
-            for (int z = -10; z <= 10; z++)
+            for (int z = -size; z <= size; z++)
             {
-                floorThreeTiles[writePos] = Instantiate(tile, new Vector3(x, -10, z), Quaternion.identity, parent3.transform);
+                floorThreeTiles.Add(Instantiate(tile, new Vector3(x, -10, z), Quaternion.identity, parent3));
             }
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        TileDestroy(1);
+    }
+
+    private void TileDestroy(int level)
+    {
+        timer += Time.deltaTime;
+        if(timer < 3)
+        {
+            return;
+        }
+
+        int num = 0;
+
+        switch (level)
+        {
+            case 1:
+                num = RanNum(floorOneTiles.Count);
+                Destroy(floorOneTiles[num]);
+                floorOneTiles.RemoveAt(num);
+                break;
+            case 2:
+                num = RanNum(floorTwoTiles.Count);
+                Destroy(floorTwoTiles[num]);
+                floorTwoTiles.RemoveAt(num);
+                break;
+
+            //at this point I realized I should have all the floors in an array
+            case 3:
+                num = RanNum(floorThreeTiles.Count);
+                Destroy(floorThreeTiles[num]);
+                floorThreeTiles.RemoveAt(num);
+                break;
+        }
+
+        timer = 0f;
+        return;
+    }
+
+    private int RanNum(int limit)
+    {
+        return Random.Range(0,limit);
     }
 }
