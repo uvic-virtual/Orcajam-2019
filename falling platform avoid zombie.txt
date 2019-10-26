@@ -7,6 +7,9 @@ powerups:
 -camoflaug
 -get back up a level (fall up)
 
+De-Buff:
+-tiles that the player touches dissapears
+
 ~start of game + menu~
 menu is above the platforms
 character behind menu
