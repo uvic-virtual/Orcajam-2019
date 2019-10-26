@@ -45,7 +45,7 @@ public class Platforms : MonoBehaviour
         float currentLevelHeight = Layers[Layers.Count - 1][0].transform.position.y;
 
         //If player goes below the current platform, and we are below maxtiles, make a new platform.
-        if (Player.transform.position.y < currentLevelHeight && Layers.Count < MaxLevels)
+        if (Player.position.y < currentLevelHeight && Layers.Count < MaxLevels)
         {
             Layers.Add(MakeLevel((int)currentLevelHeight - DistanceBetweenPlatforms));
         }
