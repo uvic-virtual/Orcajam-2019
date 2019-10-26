@@ -13,7 +13,7 @@ public class Platforms : MonoBehaviour
     /// Max # of layers before letting player fall to their doom. </summary>
     [SerializeField] private int MaxLevels = 10;
 
-    [SerializeField] private int DistanceBetweenPlatforms = 5;
+    [SerializeField] private float DistanceBetweenPlatforms = 5;
 
     /// <summary>
     /// How long a tile stays red before being destroyed.</summary>
@@ -35,7 +35,7 @@ public class Platforms : MonoBehaviour
         Layers = new List<List<GameObject>>
         {
             //create first layer.
-            MakeLevel(0)
+            MakeLevel(transform.position.y)
         };
     }
 
@@ -47,7 +47,7 @@ public class Platforms : MonoBehaviour
         //If player goes below the current platform, and we are below maxtiles, make a new platform.
         if (Player.position.y < currentLevelHeight && Layers.Count < MaxLevels)
         {
-            Layers.Add(MakeLevel((int)currentLevelHeight - DistanceBetweenPlatforms));
+            Layers.Add(MakeLevel(currentLevelHeight - DistanceBetweenPlatforms));
         }
         else 
         {
@@ -67,7 +67,7 @@ public class Platforms : MonoBehaviour
     /// </summary>
     /// <param name="y"> The y position of the platform.</param>
     /// <returns>A list of the gameobjects that make the platform.</returns>
-    private List<GameObject> MakeLevel(int y)
+    private List<GameObject> MakeLevel(float y)
     {
         //Create empty parent gameobject below this gameobject.
         var parent = new GameObject(("Level Parent " + y));
