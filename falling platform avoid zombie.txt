@@ -23,5 +23,7 @@ Player must avoid the zombies and not fall through the platform.
 
 
 dom todo:
-make the platform tiles distinguishable from eachother
-a border of some kind or checker board
+make the menu work
+  -pressing play makes the player fall past the menu and into the game map
+add fog and proper lighting
+maybe shaders
