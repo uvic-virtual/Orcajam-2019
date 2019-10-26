@@ -7,10 +7,13 @@ public class Platforms : MonoBehaviour
     [SerializeField] private int Size = 6;
     [SerializeField] private int MaxLevels = 10;
     [SerializeField] private int DistanceBetweenPlatforms = 5;
+    [SerializeField] private float TileDestroyDelay = 3;
 
     private Transform Player;
 
     private List<List<GameObject>> Layers;
+
+    private float Timer;
 
     private void Start()
     {
@@ -24,12 +27,22 @@ public class Platforms : MonoBehaviour
     private void Update()
     {
         //get height of parent block in current platform.
-        float currentLevelHeight = Layers[Layers.Count -1][0].transform.position.y;
+        float currentLevelHeight = Layers[Layers.Count - 1][0].transform.position.y;
 
-        //If player goes below block (and we have extra platforms), make another platform below it.
+        //If player goes below the current platform, and we are below maxtiles, make a new platform.
         if (Player.transform.position.y < currentLevelHeight && Layers.Count < MaxLevels)
         {
             Layers.Add(MakeLevel((int)currentLevelHeight - DistanceBetweenPlatforms));
+        }
+        else 
+        {
+            //Increment timer, and check if a new tile should be destroyed.
+            Timer += Time.deltaTime;
+            if (Timer > TileDestroyDelay)
+            {
+                DestroyRandomTile(Layers[Layers.Count - 1]);
+                Timer = 0;
+            }
         }
     }
 
@@ -59,6 +72,20 @@ public class Platforms : MonoBehaviour
             }
         }
         return level;
+    }
+
+    private void DestroyRandomTile(List<GameObject> level)
+    {
+        //pick a random tile from level
+        var tileToDestroy = level[Random.Range(1, level.Count)];
+
+        //Turn tile red
+        var renderer = tileToDestroy.GetComponent<Renderer>();
+        renderer.material.SetColor("_Color", Color.red);
+
+        //Destroy tile + remove from level list
+        Destroy(tileToDestroy, TileDestroyDelay);
+        level.Remove(tileToDestroy);
     }
 }
 
