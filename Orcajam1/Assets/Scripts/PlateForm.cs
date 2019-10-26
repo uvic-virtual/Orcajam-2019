@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlateForm : MonoBehaviour
 {
     [SerializeField] private GameObject tile;
+    [SerializeField] private int size = 6;
 
     [SerializeField] private Transform parent1;
     [SerializeField] private Transform parent2;
@@ -19,7 +20,6 @@ public class PlateForm : MonoBehaviour
     // generate all 3 plateforms
     void Start()
     {
-        int size = 6;
         timer = 0f;
 
         floorOneTiles = new List<GameObject>();
@@ -57,6 +57,12 @@ public class PlateForm : MonoBehaviour
         TileDestroy(1);
     }
 
+    private void TurnRed(GameObject target)
+    {
+        Renderer rend = target.GetComponent<Renderer>();
+        rend.material.SetColor("_Color", Color.red);
+    }
+
     private void TileDestroy(int level)
     {
         timer += Time.deltaTime;
@@ -67,23 +73,27 @@ public class PlateForm : MonoBehaviour
 
         int num = 0;
 
+
         switch (level)
         {
             case 1:
                 num = RanNum(floorOneTiles.Count);
-                Destroy(floorOneTiles[num]);
+                Destroy(floorOneTiles[num],2);
+                TurnRed(floorOneTiles[num]);
                 floorOneTiles.RemoveAt(num);
                 break;
             case 2:
                 num = RanNum(floorTwoTiles.Count);
-                Destroy(floorTwoTiles[num]);
+                Destroy(floorTwoTiles[num],2);
+                TurnRed(floorTwoTiles[num]);
                 floorTwoTiles.RemoveAt(num);
                 break;
 
             //at this point I realized I should have all the floors in an array
             case 3:
                 num = RanNum(floorThreeTiles.Count);
-                Destroy(floorThreeTiles[num]);
+                Destroy(floorThreeTiles[num],2);
+                TurnRed(floorThreeTiles[num]);
                 floorThreeTiles.RemoveAt(num);
                 break;
         }
