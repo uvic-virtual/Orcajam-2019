@@ -7,6 +7,8 @@ public class PlateForm : MonoBehaviour
     [SerializeField] private GameObject tile;
     [SerializeField] private int size = 6;
 
+    [SerializeField] private Transform player;
+
     [SerializeField] private Transform parent1;
     [SerializeField] private Transform parent2;
     [SerializeField] private Transform parent3;
@@ -54,7 +56,21 @@ public class PlateForm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TileDestroy(1);
+        float playerPos = player.position.y;
+        int level = 0;
+        if(playerPos > -1f && playerPos <= 5f)
+        {
+            level = 1;
+        }
+        if (playerPos > -4f && playerPos <= -2f)
+        {
+            level = 2;
+        }
+        if (playerPos > -11f && playerPos <= -6f)
+        {
+            level = 3;
+        }
+        TileDestroy(level);
     }
 
     private void TurnRed(GameObject target)
