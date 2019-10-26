@@ -1,0 +1,12 @@
+powerups:
+-guns
+  -shooting a ball
+-flight
+-spear
+-slow all zombies
+-camoflaug
+-
+
+menu is above the platforms
+character behind menu
+fall when you start
