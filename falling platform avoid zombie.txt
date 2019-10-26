@@ -5,8 +5,20 @@ powerups:
 -spear
 -slow all zombies
 -camoflaug
--
+-get back up a level (fall up)
 
+~start of game + menu~
 menu is above the platforms
 character behind menu
 fall when you start
+
+
+~main gameplay~
+several platforms that dissapear slowly beneith the player.
+Zombies try and kill you.
+Player must avoid the zombies and not fall through the platform.
+
+
+dom todo:
+make the platform tiles distinguishable from eachother
+a border of some kind or checker board
