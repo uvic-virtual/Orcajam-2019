@@ -403,8 +403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 3129834427553237332, guid: 7193f5ba63cc7dc448f972bf610489d7,
     type: 3}
-  Size: 10
-  MaxLevels: 10
+  Size: 100
+  MaxLevels: 100
   DistanceBetweenPlatforms: 5
   RedToDestroyTime: 3
   TileDestroyDelay: 0.1
