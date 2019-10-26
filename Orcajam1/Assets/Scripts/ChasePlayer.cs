@@ -3,8 +3,11 @@
 public class ChasePlayer : MonoBehaviour
 {
     [SerializeField] private float Speed = 2f;
+    [SerializeField] private int DamageAmount = 10;
 
     private static GameObject Player;
+    private static HealthManager PlayerHealth;
+
     private CharacterController Controller;
 
     private void Start()
@@ -12,6 +15,7 @@ public class ChasePlayer : MonoBehaviour
         if (Player == null)
         {
             Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerHealth = Player.GetComponentInChildren<HealthManager>();
         }
         Controller = GetComponent<CharacterController>();
     }
@@ -20,6 +24,15 @@ public class ChasePlayer : MonoBehaviour
     {
         FacePlayer();
         Controller.SimpleMove(transform.TransformDirection(Vector3.forward) * Speed);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.Equals(Player))
+        {
+            PlayerHealth.Health -= DamageAmount;
+            //Debug.Log(PlayerHealth.Health);
+        }
     }
 
     private void FacePlayer()

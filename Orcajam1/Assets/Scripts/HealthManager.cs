@@ -20,4 +20,9 @@ public class HealthManager : MonoBehaviour
             }
         }
     }
+
+    private void Start()
+    {
+        Health = MaxHealth;
+    }
 }
