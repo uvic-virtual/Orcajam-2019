@@ -7,8 +7,6 @@ public class PlateForm : MonoBehaviour
     [SerializeField] private GameObject tile;
     [SerializeField] private int size = 6;
 
-    [SerializeField] private Transform player;
-
     [SerializeField] private Transform parent1;
     [SerializeField] private Transform parent2;
     [SerializeField] private Transform parent3;
@@ -17,11 +15,13 @@ public class PlateForm : MonoBehaviour
     private List<GameObject> floorTwoTiles;
     private List<GameObject> floorThreeTiles;
 
+    private GameObject player;
     private float timer;
 
     // generate all 3 plateforms
     void Start()
     {
+        player = GameObject.Find("Player");
         timer = 0f;
 
         floorOneTiles = new List<GameObject>();
@@ -56,7 +56,7 @@ public class PlateForm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float playerPos = player.position.y;
+        float playerPos = player.transform.position.y;
         int level = 0;
         if(playerPos > -1f && playerPos <= 5f)
         {
