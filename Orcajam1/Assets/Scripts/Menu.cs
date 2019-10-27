@@ -20,6 +20,7 @@ public class Menu : MonoBehaviour
         string path = Application.dataPath + "/Scripts/Player/HighScores.txt";
         StreamReader reader = new StreamReader(path);
         string content = reader.ReadToEnd();
+        reader.Close();
         menuHighScores.text = "-  High Scores  -\n" + content;
 
     }
@@ -28,12 +29,11 @@ public class Menu : MonoBehaviour
     {
         IEnumerator temp = PlayButton(3f);
         player.GetComponent<CharacterController>().enabled = true;
-
         StartCoroutine(temp);
     }
     private IEnumerator PlayButton(float transSpeed)
     {
-        for (int i = 0; i < 250 / transSpeed; i++)
+        for (int i = 0; i < 500 / transSpeed; i++)
         {
             gameObject.transform.Translate(Vector3.up * Time.deltaTime * transSpeed, playerCam.transform);
             yield return new WaitForEndOfFrame();
