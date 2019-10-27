@@ -1,4 +1,6 @@
-Alex 666
-Tom 123
-Dom 69
-275
+Alex 100000
+Tom 10000
+Dom 1000
+Tim 334
+Allen 190
+Cathy 100

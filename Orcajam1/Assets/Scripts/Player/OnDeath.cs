@@ -45,10 +45,9 @@ public class OnDeath : MonoBehaviour
     private void LogHighScores()
     {
         uint currScore = score.GetScore();
-        string path = Application.dataPath + "/Scripts/Player/HighScores.txt";
-        StreamWriter writer = new StreamWriter(path,true);
-        writer.WriteLine();
-        writer.WriteLine(currScore.ToString());
+        string path = Application.dataPath + "/Scripts/Player/PlayerScore.txt";
+        StreamWriter writer = new StreamWriter(path);
+        writer.Write(currScore.ToString());
         writer.Close();
     }
 }
