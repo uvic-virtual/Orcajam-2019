@@ -6,6 +6,7 @@ public class PlateForm : MonoBehaviour
 {
     [SerializeField] private GameObject tile;
     [SerializeField] private int size = 6;
+    [SerializeField] private float dissapearTime = 1f;
 
     [SerializeField] private Transform parent1;
     [SerializeField] private Transform parent2;
@@ -82,7 +83,7 @@ public class PlateForm : MonoBehaviour
     private void TileDestroy(int level)
     {
         timer += Time.deltaTime;
-        if(timer < 3)
+        if(timer < dissapearTime)
         {
             return;
         }
