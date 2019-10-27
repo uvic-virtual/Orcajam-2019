@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1456316245147911849
+--- !u!1 &3375674080084459492
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1456316245147911851}
-  - component: {fileID: 1456316245147911848}
+  - component: {fileID: 3375674080084459494}
+  - component: {fileID: 4246070194662897999}
   m_Layer: 0
   m_Name: Tom's Platform Manager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1456316245147911851
+--- !u!4 &3375674080084459494
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456316245147911849}
+  m_GameObject: {fileID: 3375674080084459492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,22 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1456316245147911848
+--- !u!114 &4246070194662897999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456316245147911849}
+  m_GameObject: {fileID: 3375674080084459492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba5ed8375c5fd94abf16960b847aecf, type: 3}
+  m_Script: {fileID: 11500000, guid: cb7debf297f114d919d911b0821bedd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 3129834427553237332, guid: 7193f5ba63cc7dc448f972bf610489d7,
     type: 3}
   Size: 6
-  StartLevels: 5
+  StartLevels: 3
   DistanceBetweenPlatforms: 5
   RedToDestroyTime: 3
   TileDestroyDelay: 0.5

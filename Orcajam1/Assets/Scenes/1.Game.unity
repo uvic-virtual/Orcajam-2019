@@ -571,5 +571,31 @@ PrefabInstance:
       propertyPath: StartLevels
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1456316245147911848, guid: d097cdd9d8da04530b793c55a9735909, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d097cdd9d8da04530b793c55a9735909, type: 3}
+--- !u!1 &1456316244808152750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456316245147911849, guid: d097cdd9d8da04530b793c55a9735909,
+    type: 3}
+  m_PrefabInstance: {fileID: 1456316244808152749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1456316244808152751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456316244808152750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7debf297f114d919d911b0821bedd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TilePrefab: {fileID: 3129834427553237332, guid: 7193f5ba63cc7dc448f972bf610489d7,
+    type: 3}
+  Size: 6
+  StartLevels: 3
+  DistanceBetweenPlatforms: 5
+  RedToDestroyTime: 3
+  TileDestroyDelay: 0.5
