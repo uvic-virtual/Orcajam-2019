@@ -1052,5 +1052,20 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 568598068}
+    - target: {fileID: 2600420516454853481, guid: bf43472fd5d7dc3459ea502dbb904a82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.4247669
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600420516454853481, guid: bf43472fd5d7dc3459ea502dbb904a82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600420516454853481, guid: bf43472fd5d7dc3459ea502dbb904a82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf43472fd5d7dc3459ea502dbb904a82, type: 3}
