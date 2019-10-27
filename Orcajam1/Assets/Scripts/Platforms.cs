@@ -10,8 +10,8 @@ public class Platforms : MonoBehaviour
     [SerializeField] private int Size = 6;
 
     /// <summary>
-    /// Max # of layers before letting player fall to their doom. </summary>
-    [SerializeField] private int MaxLevels = 10;
+    /// Number of layers at start.</summary>
+    [SerializeField] private int StartLevels = 3;
 
     [SerializeField] private float DistanceBetweenPlatforms = 5;
 
@@ -32,33 +32,43 @@ public class Platforms : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        Layers = new List<List<GameObject>>
+        Layers = new List<List<GameObject>>();
+
+        for (int i=0; i<StartLevels; i++)
         {
-            //create first layer.
-            MakeLevel(transform.position.y)
-        };
+            Layers.Add(MakeLevel(transform.position.y - (DistanceBetweenPlatforms * i)));
+        }
     }
 
     private void Update()
     {
         Timer += Time.deltaTime;
 
-        var currentLayer = Layers[Layers.Count - 1];
+        var currentLayer = GetClosestLayer();
 
-        //get height of parent block in current platform.
-        float currentLevelHeight = currentLayer[0].transform.position.y;
-
-        //If player goes below the current platform, and we are below maxtiles, make a new platform.
-        if (Player.position.y < currentLevelHeight && Layers.Count < MaxLevels)
-        {
-            Layers.Add(MakeLevel(currentLevelHeight - DistanceBetweenPlatforms));
-        }
-        else if (Timer > TileDestroyDelay && currentLayer.Count > 1)
+        if (Timer > TileDestroyDelay && currentLayer.Count > 1)
         {
              //destroy a tile in the last layer in layers (current layer).
             DestroyRandomTile(currentLayer);
             Timer = 0;
         }
+    }
+
+    /// <summary>
+    /// Finds the closest layer of platforms to the player.</summary>
+    /// <returns>The list that represents the cloest layer</returns>
+    private List<GameObject> GetClosestLayer()
+    {
+        var closestLayer = (layer: Layers[0], distance: Mathf.Abs(Player.transform.position.y - Layers[0][0].transform.position.y));
+        foreach (var layer in Layers)
+        {
+            float distanceFromPlayerToLayer = Mathf.Abs(Player.transform.position.y - layer[0].transform.position.y);
+            if (distanceFromPlayerToLayer < closestLayer.distance)
+            {
+                closestLayer = (layer, distanceFromPlayerToLayer);
+            }
+        }
+        return closestLayer.layer;
     }
 
     /// <summary>
@@ -92,16 +102,14 @@ public class Platforms : MonoBehaviour
     private void DestroyRandomTile(List<GameObject> level)
     {
         //pick a random tile from level
-        var tileToDestroy = level[Random.Range(1, level.Count)];
+        var tileToDestroy = level[UnityEngine.Random.Range(1, level.Count)];
 
         //Turn tile red
-        var renderer = tileToDestroy.GetComponent<Renderer>();
-        renderer.material.SetColor("_Color", Color.red);
+        var rend = tileToDestroy.GetComponent<Renderer>();
+        rend.material.SetColor("_Color", Color.red);
 
         //Destroy tile and remove from level list
         Destroy(tileToDestroy, RedToDestroyTime);
         level.Remove(tileToDestroy);
     }
 }
-
-
