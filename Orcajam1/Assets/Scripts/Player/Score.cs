@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     [SerializeField] private Text display;
-    [SerializeField] private Text menuHighScores;
 
     private GameObject player;
     private CharacterController controller;
@@ -27,7 +26,6 @@ public class Score : MonoBehaviour
         StreamReader reader = new StreamReader(path);
         string content = reader.ReadToEnd();
         reader.Close();
-        menuHighScores.text = "-  High Scores  -\n" + content;
         
         highScores = content.Split('\n');
         //print(highScores[0]);

@@ -41,24 +41,23 @@ public class Platforms : MonoBehaviour
 
     private void Update()
     {
+        Timer += Time.deltaTime;
+
+        var currentLayer = Layers[Layers.Count - 1];
+
         //get height of parent block in current platform.
-        float currentLevelHeight = Layers[Layers.Count - 1][0].transform.position.y;
+        float currentLevelHeight = currentLayer[0].transform.position.y;
 
         //If player goes below the current platform, and we are below maxtiles, make a new platform.
         if (Player.position.y < currentLevelHeight && Layers.Count < MaxLevels)
         {
             Layers.Add(MakeLevel(currentLevelHeight - DistanceBetweenPlatforms));
         }
-        else 
+        else if (Timer > TileDestroyDelay && currentLayer.Count > 1)
         {
-            //Increment timer, and check if a new tile should be destroyed.
-            Timer += Time.deltaTime;
-            if (Timer > TileDestroyDelay)
-            {
-                //destroy a tile in the last layer in layers (current layer).
-                DestroyRandomTile(Layers[Layers.Count - 1]);
-                Timer = 0;
-            }
+             //destroy a tile in the last layer in layers (current layer).
+            DestroyRandomTile(currentLayer);
+            Timer = 0;
         }
     }
 
