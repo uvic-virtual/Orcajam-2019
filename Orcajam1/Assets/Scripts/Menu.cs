@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private Text menuHighScores;
+    [SerializeField] private Camera playerCam;
 
     private string[] highScores;
 
@@ -23,17 +24,21 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void PlayButton()
     {
-        StartCoroutine(PlayButton_wait);
+        IEnumerator temp = PlayButton(3f);
+        StartCoroutine(temp);
     }
-    private IEnumerable PlayButton_wait()
+    private IEnumerator PlayButton(float transSpeed)
     {
-        gameObject.transform.parent = null;
-        yield return new WaitForSeconds(waitTime);
+        for (int i = 0; i < 250 / transSpeed; i++)
+        {
+            gameObject.transform.Translate(Vector3.up * Time.deltaTime * transSpeed, playerCam.transform);
+            yield return new WaitForEndOfFrame();
+        }
+        Debug.Log("done");
         SceneManager.LoadScene("1.Game");
     }
 }
