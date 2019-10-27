@@ -24,11 +24,6 @@ public class Menu : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void PlayButton()
     {
         IEnumerator temp = PlayButton(3f);
