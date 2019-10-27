@@ -57,11 +57,6 @@ public class GameOverMenu : MonoBehaviour
             return;
         UpdateHighScores();
 
-        for (int i = 0; i < highScores.Length; i++)
-        {
-            Debug.Log(highScores[i]);
-        }
-
         string path = Application.dataPath + "/Scripts/Player/HighScores.txt";
         StreamWriter writer = new StreamWriter(path);
         writer.Write("");
