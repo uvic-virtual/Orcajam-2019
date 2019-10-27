@@ -38,13 +38,19 @@ public class Score : MonoBehaviour
     {
         if(player.transform.position.y < 5f)
         {
-            updateScore();
+            UpdateScore();
         }     
     }
 
-    private void updateScore()
+    private void UpdateScore()
     {
         currScore ++;
         display.text = "Score: "+ currScore;
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("started");
+        controller.enabled = true;
     }
 }
