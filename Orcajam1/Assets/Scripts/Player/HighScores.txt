@@ -1,6 +1,6 @@
 Alex 100000
 Tom 10000
 Dom 1000
+C 803
 Tim 334
 Allen 190
-Cathy 100
