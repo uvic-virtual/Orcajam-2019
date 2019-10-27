@@ -10,10 +10,13 @@ public class Menu : MonoBehaviour
     [SerializeField] private Text menuHighScores;
     [SerializeField] private Camera playerCam;
 
+    private GameObject player;
     private string[] highScores;
 
     void Start()
     {
+        player = GameObject.Find("Player");
+        player.GetComponent<CharacterController>().enabled = false;
         string path = Application.dataPath + "/Scripts/Player/HighScores.txt";
         StreamReader reader = new StreamReader(path);
         string content = reader.ReadToEnd();
@@ -29,6 +32,8 @@ public class Menu : MonoBehaviour
     public void PlayButton()
     {
         IEnumerator temp = PlayButton(3f);
+        player.GetComponent<CharacterController>().enabled = true;
+
         StartCoroutine(temp);
     }
     private IEnumerator PlayButton(float transSpeed)
@@ -38,7 +43,6 @@ public class Menu : MonoBehaviour
             gameObject.transform.Translate(Vector3.up * Time.deltaTime * transSpeed, playerCam.transform);
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("done");
         SceneManager.LoadScene("1.Game");
     }
 }
