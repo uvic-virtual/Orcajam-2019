@@ -24,7 +24,6 @@ public class ControlPlayer : MonoBehaviour
 		animator.SetFloat("Vertical", zTranslation);
 		
         float speed = Mathf.Abs((Controller.transform.position - LastLocation).magnitude/Time.deltaTime);
-		Debug.Log(speed);
         LastLocation = Controller.transform.position;
 		animator.SetFloat("Speed", speed);
     }
