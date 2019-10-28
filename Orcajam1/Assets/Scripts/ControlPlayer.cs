@@ -19,7 +19,7 @@ public class ControlPlayer : MonoBehaviour
         Controller.SimpleMove(new Vector3(xTranslation, 0, zTranslation) * Speed);
 		animator.SetFloat("Horizontal", xTranslation);
 		animator.SetFloat("Vertical", zTranslation);
-		animator.SetFloat("Speed", );
+		//animator.SetFloat("Speed", );
     }
 	
 	void Animate(){
