@@ -271,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 9003092361975887378, guid: f545bbfa78c0e1b4296ef86b1501f25c,
         type: 3}
       propertyPath: m_Name
-      value: 'Player girl '
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9003092363563285535, guid: f545bbfa78c0e1b4296ef86b1501f25c,
         type: 3}
@@ -418,6 +418,12 @@ PrefabInstance:
       propertyPath: StartLevels
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4246070194662897999, guid: d097cdd9d8da04530b793c55a9735909,
+        type: 3}
+      propertyPath: ZombiePrefab
+      value: 
+      objectReference: {fileID: 4647681761530350244, guid: 2424c3583492756438d0ef1364c8a2c3,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 1456316245147911848, guid: d097cdd9d8da04530b793c55a9735909, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d097cdd9d8da04530b793c55a9735909, type: 3}
