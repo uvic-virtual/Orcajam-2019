@@ -2,6 +2,7 @@
 
 public class ChasePlayer : MonoBehaviour
 {
+    [SerializeField] private float FollowRadius = 0.2f;
     [SerializeField] private float Speed = 2f;
     [SerializeField] private int DamageAmount = 10;
 
@@ -23,15 +24,14 @@ public class ChasePlayer : MonoBehaviour
     private void Update()
     {
         FacePlayer();
-        Controller.SimpleMove(transform.TransformDirection(Vector3.forward) * Speed);
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.Equals(Player))
+        if (Vector3.Distance(transform.position, Player.transform.position) < FollowRadius)
         {
             PlayerHealth.Health -= DamageAmount;
-            //Debug.Log(PlayerHealth.Health);
+            Debug.Log(PlayerHealth.Health);
+        }
+        else
+        {
+            Controller.SimpleMove(transform.TransformDirection(Vector3.forward) * Speed);
         }
     }
 
