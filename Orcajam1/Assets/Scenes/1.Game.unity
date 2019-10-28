@@ -308,6 +308,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b54b40f25d0024ab119813f49dcc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformSize: 8
+  spawnTime: 2
+  items:
+  - {fileID: 4785478553075052195, guid: 0bb1748d02fc49844aab4f828f4ed325, type: 3}
+  - {fileID: 4785478553075052195, guid: 0bb1748d02fc49844aab4f828f4ed325, type: 3}
+  - {fileID: 2494574656666602685, guid: 93cdb4cd78018c2438b1eb2814a1f8bd, type: 3}
+  - {fileID: 4181033068004441357, guid: dc3111484876d2a4a931ddc1472b2e46, type: 3}
 --- !u!4 &653770660
 Transform:
   m_ObjectHideFlags: 0
