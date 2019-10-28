@@ -26,6 +26,11 @@ public class Score : MonoBehaviour
         }
     }
 
+    public void AddScore(uint x)
+    {
+        currScore += x;
+    }
+
     private void UpdateScore()
     {
         currScore++;
