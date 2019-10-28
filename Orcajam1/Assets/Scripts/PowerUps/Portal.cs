@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Portals : MonoBehaviour
 {
-    private GameObject player;
     private Score score;
 
     private void Start()
     {
         score = FindObjectOfType<Score>();
-        player = GameObject.Find("Player");
     }
 
     private void OnTriggerEnter(Collider other)
