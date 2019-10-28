@@ -44,6 +44,7 @@ public class PowerUps : MonoBehaviour
 
     private void Spawn(Vector3 pos)
     {
+        Debug.Log(pos);
         int index = Random.Range(0, items.Length - 1);
         GameObject clone = Instantiate(items[index], pos,Quaternion.identity);
         Destroy(clone, 5f);

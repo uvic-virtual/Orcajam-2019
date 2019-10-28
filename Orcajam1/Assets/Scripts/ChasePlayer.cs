@@ -27,7 +27,6 @@ public class ChasePlayer : MonoBehaviour
         if (Vector3.Distance(transform.position, Player.transform.position) < FollowRadius)
         {
             PlayerHealth.Health -= DamageAmount;
-            Debug.Log(PlayerHealth.Health);
         }
         else
         {
