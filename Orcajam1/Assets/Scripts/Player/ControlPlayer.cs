@@ -11,6 +11,7 @@ public class ControlPlayer : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
