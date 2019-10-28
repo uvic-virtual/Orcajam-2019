@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<CharacterController>().enabled = false;
         string path = Application.dataPath + "/Scripts/Player/HighScores.txt";
         StreamReader reader = new StreamReader(path);

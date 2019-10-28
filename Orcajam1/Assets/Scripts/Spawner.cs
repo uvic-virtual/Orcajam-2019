@@ -12,7 +12,8 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        playerPos = GameObject.Find("Player").transform;
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        playerCam = GetComponentInChildren<Camera>();
         timer = 0f;
     }
 
