@@ -4,10 +4,14 @@ using UnityEngine;
 public class Platforms : MonoBehaviour
 {
     [SerializeField] private GameObject TilePrefab;
-    
+
+    [SerializeField] private GameObject ZombiePrefab;
+
     /// <summary>
     /// 1/2 * the # of tiles on a side.</summary>
-    [SerializeField] private int Size = 6;
+    [SerializeField] private int Size = 8;
+
+    [SerializeField] private int MaxZombies = 10;
 
     /// <summary>
     /// Number of layers at start.</summary>
@@ -27,17 +31,20 @@ public class Platforms : MonoBehaviour
 
     private List<List<GameObject>> Layers;
 
+    private List<GameObject> Zombies;
+
     private float Timer;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        Layers = new List<List<GameObject>>();
 
+        Layers = new List<List<GameObject>>();
         for (int i=0; i<StartLevels; i++)
         {
             Layers.Add(MakeLevel(transform.position.y - (DistanceBetweenPlatforms * i)));
         }
+        Zombies = new List<GameObject>();
     }
 
     private void Update()
@@ -101,12 +108,20 @@ public class Platforms : MonoBehaviour
 
     private void DestroyRandomTile(List<GameObject> level)
     {
+        int tileIndex = UnityEngine.Random.Range(1, level.Count);
+
         //pick a random tile from level
-        var tileToDestroy = level[UnityEngine.Random.Range(1, level.Count)];
+        var tileToDestroy = level[tileIndex];
 
         //Turn tile red
         var rend = tileToDestroy.GetComponent<Renderer>();
         rend.material.SetColor("_Color", Color.red);
+
+        //Spawn Zombie (1/3 of the time)
+        if (tileIndex % 3 == 0 && Zombies.Count < MaxZombies)
+        {
+            Zombies.Add(Instantiate(ZombiePrefab, tileToDestroy.transform.position + Vector3.up, Quaternion.identity));
+        }
 
         //Destroy tile and remove from level list
         Destroy(tileToDestroy, RedToDestroyTime);
